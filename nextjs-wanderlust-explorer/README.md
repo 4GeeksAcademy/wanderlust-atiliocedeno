@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wanderlust Explorer
 
-## Getting Started
+Plataforma travel-tech para descubrir y guardar experiencias únicas alrededor del mundo.
 
-First, run the development server:
+## Tecnologías
+
+Next.js App Router, React, TypeScript y Tailwind CSS. Dataset local, sin backend ni base de datos.
+
+## Instalación y ejecución
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Funcionalidades
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Home con hero y CTA, explorador, detalle, favoritos y perfil.
+- 100 experiencias locales.
+- Búsqueda por título con expresión regular case-insensitive.
+- Filtros combinables por categoría y destino.
+- Query parameters `search`, `category` y `destination` sincronizados con la URL.
+- Favoritos en `useState` compartido, sin `localStorage` ni librerías externas de estado.
+- Diseño responsive para móvil, tablet y escritorio.
 
-## Learn More
+## Estructura
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app`: rutas Home, experiences, detail, favorites y profile.
+- `src/components`: Navbar, Footer, tarjetas, filtros y proveedor de favoritos.
+- `src/data`: dataset local de experiencias.
+- `src/hooks`: lógica reutilizable de filtrado.
+- `src/types`: tipos TypeScript.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design References
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Airbnb](https://www.airbnb.com/): inspiración para búsqueda, tarjetas y navegación de descubrimiento.
+- [Headout](https://www.headout.com/): referencia para filtros, precios y ratings.
+- [Visit Iceland](https://www.visiticeland.com/): inspiración para imágenes grandes y narrativa visual de destinos.
 
-## Deploy on Vercel
+Las referencias solo inspiran layout, cards, búsqueda, filtros y jerarquía visual; no se replica ninguna interfaz completa.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Favoritos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los favoritos se guardan como IDs en `useState` dentro de `FavoritesProvider`; se reinician al recargar.

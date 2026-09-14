@@ -12,7 +12,7 @@ const FavoritesContext = createContext<FavoritesContextValue | null>(null);
 
 export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
-  useEffect(() => { document.title = "Wanderlust Explorer"; }, []);
+  useEffect(() => { document.title = favoriteIds.length ? `Wanderlust Explorer (${favoriteIds.length} saved)` : "Wanderlust Explorer"; }, [favoriteIds.length]);
   const toggleFavorite = useCallback((id: string) => setFavoriteIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]), []);
   const value = useMemo(() => ({ favoriteIds, toggleFavorite, isFavorite: (id: string) => favoriteIds.includes(id) }), [favoriteIds, toggleFavorite]);
   return <FavoritesContext.Provider value={value}>{children}</FavoritesContext.Provider>;

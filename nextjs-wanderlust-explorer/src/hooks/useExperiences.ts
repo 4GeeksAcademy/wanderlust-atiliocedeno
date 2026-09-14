@@ -17,7 +17,7 @@ export function useExperiences(experiences: Experience[], filters: Filters) {
     return experiences.filter((experience) => {
       const matchesSearch = !term || regex.test(experience.title);
       const matchesCategory = !filters.category || filters.category === "All" || experience.category === filters.category;
-      const matchesDestination = !filters.destination || experience.destination === filters.destination;
+      const matchesDestination = !filters.destination || experience.destination.toLowerCase().endsWith(`, ${filters.destination.toLowerCase()}`) || experience.destination === filters.destination;
       return matchesSearch && matchesCategory && matchesDestination;
     });
   }, [experiences, filters.search, filters.category, filters.destination]);
